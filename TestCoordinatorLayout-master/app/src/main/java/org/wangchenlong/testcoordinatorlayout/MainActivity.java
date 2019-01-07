@@ -3,7 +3,9 @@ package org.wangchenlong.testcoordinatorlayout;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -20,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     // 控制ToolBar的变量
     private static final float PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR = 0.9f;
     private static final float PERCENTAGE_TO_HIDE_TITLE_DETAILS = 0.3f;
-    // 动画执行的时间
+
     private static final int ALPHA_ANIMATIONS_DURATION = 200;
 
     private boolean mIsTheTitleVisible = false;
@@ -57,9 +59,7 @@ public class MainActivity extends AppCompatActivity {
         mAblAppBar.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-                // 获取滚动的最大距离
                 int maxScroll = appBarLayout.getTotalScrollRange();
-                // 计算滚动的百分比
                 float percentage = (float) Math.abs(verticalOffset) / (float) maxScroll;
                 handleAlphaOnTitle(percentage);
                 handleToolbarTitleVisibility(percentage);
@@ -84,11 +84,7 @@ public class MainActivity extends AppCompatActivity {
         mFlTitleContainer.setLayoutParams(petBackgroundLp);
     }
 
-    /**
-     * 处理ToolBar的显示
-     * 默认不显示，隐藏与中心的位置
-     * @param percentage
-     */
+    // 处理ToolBar的显示
     private void handleToolbarTitleVisibility(float percentage) {
         if (percentage >= PERCENTAGE_TO_SHOW_TITLE_AT_TOOLBAR) {
             if (!mIsTheTitleVisible) {
@@ -103,12 +99,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * 控制中心位置的Title的显示
-     * 当百分比大于30%时将放中间字体的LinearLayout设置为非透明，并且不可视
-     *
-     * @param percentage
-     */
+    // 控制Title的显示
     private void handleAlphaOnTitle(float percentage) {
         if (percentage >= PERCENTAGE_TO_HIDE_TITLE_DETAILS) {
             if (mIsTheTitleContainerVisible) {
@@ -130,7 +121,6 @@ public class MainActivity extends AppCompatActivity {
                 : new AlphaAnimation(1f, 0f);
 
         alphaAnimation.setDuration(duration);
-        // 动画执行完成之后保持最终状态
         alphaAnimation.setFillAfter(true);
         v.startAnimation(alphaAnimation);
     }
