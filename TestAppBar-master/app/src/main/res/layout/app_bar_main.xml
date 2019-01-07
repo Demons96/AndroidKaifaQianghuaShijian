@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -40,7 +39,7 @@
                     android:contentDescription="@null"
                     android:scaleType="centerCrop"
                     android:visibility="gone"
-                    app:layout_widthPercent="120%"/>
+                    app:layout_widthPercent="120%" />
 
                 <ImageView
                     android:id="@+id/appbar_iv_target"
@@ -50,7 +49,7 @@
                     android:contentDescription="@null"
                     android:scaleType="centerCrop"
                     android:src="@drawable/tiffany"
-                    app:layout_widthPercent="120%"/>
+                    app:layout_widthPercent="120%" />
 
             </android.support.percent.PercentFrameLayout>
 
@@ -59,7 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
-                app:popupTheme="@style/AppTheme.PopupOverlay"/>
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
@@ -69,7 +68,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:layout_gravity="bottom"
-            app:layout_scrollFlags="scroll"/>
+            app:layout_scrollFlags="scroll" />
 
     </android.support.design.widget.AppBarLayout>
 
@@ -85,7 +84,7 @@
             android:id="@+id/main_vp_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     </android.support.v4.widget.NestedScrollView>
 
