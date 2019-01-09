@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_horizontal_margin"
+    tools:ignore="HardcodedText">
+
+    <Button
+        android:id="@+id/main_b_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SVG图片"/>
+
+    <Button
+        android:id="@+id/main_b_animation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SVG动画"/>
+
+    <Button
+        android:id="@+id/main_b_sharp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sharp库"/>
+
+</LinearLayout>

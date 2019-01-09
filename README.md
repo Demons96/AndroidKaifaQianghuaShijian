@@ -59,3 +59,28 @@
 [BottomDialogDemo-master](https://github.com/SpikeKing/BottomDialogDemo)
 
 ![](https://upload-images.jianshu.io/upload_images/3304008-fb58d8fb7ccaf248.gif?imageMogr2/auto-orient/strip)
+
+## 第六章 精美动画
+-----------------------------------------------------
+
+### 6.1 页面中切换元素分享的动画效果
+
+[wcl-onboarding-demo](https://github.com/SpikeKing/wcl-onboarding-demo)
+
+![](https://upload-images.jianshu.io/upload_images/3304008-7cbf2dfa62d772b9.gif?imageMogr2/auto-orient/strip)
+
+### 6.2 界面展开中原型爆裂的效果
+
+[wcl-circle-reveal-demo](https://github.com/SpikeKing/wcl-circle-reveal-demo)
+
+![](https://upload-images.jianshu.io/upload_images/3304008-4b0dfc42b8074e68.gif?imageMogr2/auto-orient/strip)
+
+
+## 第六章 Kotlin 与 SVG
+-----------------------------------------------------
+
+### 7.1 Kotlin基础教程
+[wcl-kotlin-demo](https://github.com/SpikeKing/wcl-kotlin-demo)
+
+### 7.2 SVG图像技术
+[TestSVG](https://github.com/SpikeKing/TestSVG)
