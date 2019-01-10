@@ -1,0 +1,86 @@
+// buildscript {
+//     repositories {
+//         jcenter()
+//     }
+//     dependencies {
+//         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+//     }
+// }
+
+// Lambda表达式
+// plugins {
+//     id "me.tatarka.retrolambda" version "3.2.4"
+// }
+
+apply plugin: 'com.android.application'
+//apply plugin: 'com.neenbedankt.android-apt' // 注释处理
+
+final BUILD_TOOLS_VERSION = '23.0.1'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "${BUILD_TOOLS_VERSION}"
+
+    defaultConfig {
+        applicationId "org.wangchenlong.wcl_espresso_dagger_demo"
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+        testInstrumentationRunner "org.wangchenlong.wcl_espresso_dagger_demo.runner.WeatherTestRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    // 注释冲突
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
+
+    // 使用Java1.8
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    // 数据绑定
+    dataBinding {
+        enabled = true
+    }
+}
+
+final DAGGER_VERSION = '2.11'
+final RETROFIT_VERSION = '2.11'
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.2'
+    // Warning:Conflict with dependency 'com.android.support:support-annotations'.
+    // Resolved versions for app (23.1.1) and test app (23.0.1) differ.
+    // See http://g.co/androidstudio/app-test-app-conflict for details.
+    compile "com.android.support:appcompat-v7:${BUILD_TOOLS_VERSION}" // 需要与BuildTools保持一致
+
+    compile "com.google.dagger:dagger:${DAGGER_VERSION}" // dagger2
+    compile "com.google.dagger:dagger-compiler:${DAGGER_VERSION}" // dagger2
+
+    compile 'io.reactivex:rxandroid:1.1.0' // RxAndroid
+
+    compile "com.squareup.retrofit:retrofit:${RETROFIT_VERSION}" // Retrofit网络处理
+    compile "com.squareup.retrofit:adapter-rxjava:${RETROFIT_VERSION}" // Retrofit的rx解析库
+    compile "com.squareup.retrofit:converter-gson:${RETROFIT_VERSION}" // Retrofit的gson库
+    compile 'com.squareup.okhttp:logging-interceptor:2.6.0' // 拦截器
+
+    // 测试的编译
+    androidTestCompile 'com.android.support.test:runner:0.4.1' // Android JUnit Runner
+    androidTestCompile 'com.android.support.test:rules:0.4.1' // JUnit4 Rules
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.1' // Espresso core
+
+//    provided 'javax.annotation:jsr250-api:1.0' // Java标注
+}

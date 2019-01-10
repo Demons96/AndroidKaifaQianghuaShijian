@@ -1,14 +1,14 @@
 package org.wangchenlong.wcl_kotlin_demo
 
 import android.content.Context
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
+import android.support.v7.app.AppCompatActivity
 import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout.LayoutParams
 import android.widget.LinearLayout
+import android.widget.LinearLayout.LayoutParams
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
             layoutParams = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
             orientation = LinearLayout.VERTICAL
 
-            // 设置属性
+            // 设置属性m
             v<TextView> {
                 layoutParams = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
                 text = "Hello"

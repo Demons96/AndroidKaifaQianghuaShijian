@@ -76,11 +76,125 @@
 ![](https://upload-images.jianshu.io/upload_images/3304008-4b0dfc42b8074e68.gif?imageMogr2/auto-orient/strip)
 
 
-## 第六章 Kotlin 与 SVG
+## 第七章 Kotlin 与 SVG
 -----------------------------------------------------
 
 ### 7.1 Kotlin基础教程
+
 [wcl-kotlin-demo](https://github.com/SpikeKing/wcl-kotlin-demo)
+
+![](https://upload-images.jianshu.io/upload_images/3304008-a6e7249ae75fe495.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 ### 7.2 SVG图像技术
 [TestSVG](https://github.com/SpikeKing/TestSVG)
+
+![](https://upload-images.jianshu.io/upload_images/3304008-51208f4cd435a456.gif?imageMogr2/auto-orient/strip)
+
+## 第八章 测试与优化
+-----------------------------------------------------
+
+### 8.1 基于 Espresso 和 Dagger 的自动化测试框架
+
+[wcl-espresso-dagger-demo](https://github.com/SpikeKing/wcl-espresso-dagger-demo)
+
+### 8.2 优化内存泄露与电量消耗的技术框架
+
+[wcl-leakcanary-demo](https://github.com/SpikeKing/wcl-leakcanary-demo)
+
+### 8.2.2 电量优化
+[battery-historian](https://github.com/google/battery-historian)
+## 修改的部分
+```
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.1'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+```
+
+```
+distributionBase=GRADLE_USER_HOME
+distributionPath=wrapper/dists
+distributionUrl=https\://services.gradle.org/distributions/gradle-4.6-all.zip
+zipStoreBase=GRADLE_USER_HOME
+zipStorePath=wrapper/dists
+```
+
+```
+javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+```
+
+lambda注释掉老的配置
+```
+//plugins {
+//    id "me.tatarka.retrolambda" version "3.2.5"
+//}
+```
+
+kotlin 的配置
+```
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = '1.2.71'
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+-------------------------------
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+```
+
+## Plugin with id 'com.neenbedankt.android-apt' not found.
+```
+classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'删掉
+
+和modul下的apply plugin: 'com.neenbedankt.android-apt'删掉
+
+ apt 'com.google.dagger:dagger-compiler:2.2'
+
+把apt改成annotationProcessor
+```
