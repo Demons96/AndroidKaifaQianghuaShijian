@@ -30,13 +30,12 @@ public class MoreActivity extends Activity {
     final List<String> mManyWordList = Arrays.asList(mManyWords);
 
     // Action类似订阅者, 设置TextView
-    private Action1<String> mTextViewAction =
-            new Action1<String>() {
-                @Override
-                public void call(String s) {
-                    mTvText.setText(s);
-                }
-            };
+    private Action1<String> mTextViewAction = new Action1<String>() {
+        @Override
+        public void call(String s) {
+            mTvText.setText(s);
+        }
+    };
 
     // Action设置Toast
     private Action1<String> mToastAction = new Action1<String>() {
